@@ -1,0 +1,26 @@
+*> THIS PROGRAM WILL RUN HELLO WORLD
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-WORLD.
+
+PROCEDURE DIVISION.
+DISPLAY "Hello World!"
+STOP RUN.
+
+*> THIS PROGRAM WILL RUN WITH AN INPUT FILE TO CONVERT THE FIRST LINE OF INTS ($ AMOUNT) TO € (as of march 2020)
+IDENTIFICATION DIVISION.
+PROGRAM-ID. DOLLAR-EURO-CONV.
+
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 Dollars PIC 9(6)V99. 
+01 Conversion PIC 9(6)V99.
+
+
+PROCEDURE DIVISION.
+DISPLAY 'We will convert your money into Euros ;)'.
+DISPLAY 'Enter in the amount of money in your wallet'.
+DISPLAY "We can accept up to and including $999999.99"
+ACCEPT Dollars.
+MULTIPLY Dollars BY 0.94 GIVING Conversion.
+DISPLAY 'Your money in $ is equal to €', Conversion.
+STOP RUN.
