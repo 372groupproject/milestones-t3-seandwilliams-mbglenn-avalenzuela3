@@ -1,1 +1,6 @@
-Begining COBOL for programmes by Michael Coughlan
+Begining COBOL for programmes by Michael Coughlan == BOOK
+http://www.csis.ul.ie/cobol/?ref=hackr.io == Great WEBSITE
+https://www.ibm.com/support/knowledgecenter/SS6SG3_4.2.0/com.ibm.entcobol.doc_4.2/PGandLR/igy3lr50.pdf == REF MAN
+https://www.reddit.com/r/cobol/ == COBOL community (via reddit (best and most active one I could find))
+CANT FIND PROGRAMS THAT USE COBOL (though many obviously do I cant find specific exmaples)
+opencobol IDE (is iffy)
