@@ -17,3 +17,6 @@ hello-world: hello-world.cbl
 	
 dollars-to-euros: dollars-to-euros.cbl
 	$(CC) $(FLAGS) dollars-to-euros.cbl
+
+wheresTheMoney: wheresTheMoney.cbl
+	$(CC) $(FLAGS) wheresTheMoney.cbl
