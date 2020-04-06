@@ -4,3 +4,8 @@ https://www.ibm.com/support/knowledgecenter/SS6SG3_4.2.0/com.ibm.entcobol.doc_4.
 https://www.reddit.com/r/cobol/ == COBOL community (via reddit (best and most active one I could find))
 CANT FIND PROGRAMS THAT USE COBOL (though many obviously do I cant find specific exmaples)
 opencobol IDE (is iffy)
+
+refrences Michael used in writing parper
+https://www.tutorialspoint.com/cobol/index.htm == WEBSITE
+https://www.mainframestechhelp.com/tutorials/cobol/cobol-introduction.htm == WEBSITE
+http://www.techtricky.com/cobol-88-level-number-with-examples/ == WEBSITE
