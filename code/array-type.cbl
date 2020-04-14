@@ -11,10 +11,15 @@ DISPLAY "The array was set to 'Hi!' 5 times, see "ARRAY-STRINGS.
 DISPLAY "Here is a loop showing our items each on a newline.".
 PERFORM OUR-DISP VARYING I FROM 1 BY 1 UNTIL I>5
 
-MOVE "NEW" TO ARRAY-ITEM(1).
+MOVE "BYE" TO ARRAY-ITEM(1).
 DISPLAY "Now loop with 'NEW' taking place of array[1] (COBOL is not zero based indexing)".
 PERFORM OUR-DISP VARYING I FROM 1 BY 1 UNTIL I>5
+MOVE 999 TO ARRAY-ITEM(1).
+DISPLAY "Now loop with '999'(int) taking place of array[1]".
+PERFORM OUR-DISP VARYING I FROM 1 BY 1 UNTIL I>5
 STOP RUN.
+
+
 
 OUR-DISP.
 DISPLAY ARRAY-ITEM(I).
