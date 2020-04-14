@@ -2,8 +2,12 @@ CC=cobc
 #FLAGS=-xj -free #x builds an executable, j runs the program after compile, free removes column restrictions
 FLAGS=-x -free
 
-all: p2_if p2_switch p2_while hello-world dollars-to-euros wheresTheMoney int-type array-type INT-TYPE-DIV-BY-ZERO string-type FLOAT-DIV-BY-ZERO string-type FLOAT-DIV-BY-ZERO float-type ARRAY-ARITHMETIC-ERR
+all: p2_if p2_switch p2_while hello-world dollars-to-euros wheresTheMoney int-type array-type INT-TYPE-DIV-BY-ZERO string-type FLOAT-DIV-BY-ZERO string-type FLOAT-DIV-BY-ZERO float-type ARRAY-ARITHMETIC-ERR ARITHMETIC-OVERFLOW-ERR
 	
+install_compiler: 
+	sudo apt-get update
+	sudo apt-get install gnucobol
+
 p2_if: p2_if.cbl
 	$(CC) $(FLAGS) p2_if.cbl
 	
@@ -43,6 +47,8 @@ FLOAT-DIV-BY-ZERO: FLOAT-DIV-BY-ZERO.cbl
 float-type: float-type.cbl
 	$(CC) $(FLAGS) float-type.cbl
 
+ARITHMETIC-OVERFLOW-ERR: ARITHMETIC-OVERFLOW-ERR.cbl
+	$(CC) $(FLAGS) ARITHMETIC-OVERFLOW-ERR.cbl
 clean:
 	-rm p2_if 
 	-rm p2_switch 
@@ -55,3 +61,4 @@ clean:
 	-rm FLOAT-DIV-BY-ZERO
 	-rm int-type
 	-rm string-type
+	-rm ARITHMETIC-OVERFLOW-ERR
