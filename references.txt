@@ -9,3 +9,8 @@ refrences Michael used in writing parper
 https://www.tutorialspoint.com/cobol/index.htm == WEBSITE
 https://www.mainframestechhelp.com/tutorials/cobol/cobol-introduction.htm == WEBSITE
 http://www.techtricky.com/cobol-88-level-number-with-examples/ == WEBSITE
+
+Extra references for final paper
+https://thenewstack.io/cobol-everywhere-will-maintain/
+https://www.quora.com/Who-still-uses-COBOL
+https://www.tutorialspoint.com/cobol/cobol_data_types.htm
