@@ -38,6 +38,7 @@ WORKING-STORAGE SECTION.
 01 Travel_Percent PIC 9(3)V99.
 01 Taxes_Percent PIC 9(3)V99.
 01 Extra_Percent PIC S9(3)V99.
+01 Income_Raise PIC 9(7)V99.
 01 Curr PIC X(15) VALUE SPACE.
 
 PROCEDURE DIVISION.
@@ -113,7 +114,28 @@ FRANC-SECT.
     DISPLAY '| Travel        | SFr. ', WS-LEDGER-TRAVEL, '  |  ', Travel_Percent, '% | #########################'
     DISPLAY '| Taxes         | SFr. ', Yearly_Taxes, '  |  ', Taxes_Percent, '% | #########################'
     DISPLAY '| Extra         | SFr. ', Extra, ' | ', Extra_Percent, '% | #########################'
-    DISPLAY '--------------------------------------------------------------------------------------------------'.
+    DISPLAY '--------------------------------------------------------------------------------------------------'
+    IF (Extra_Percent < 30) THEN
+        COMPUTE Income_Raise = ((100 - (100 - Extra_Percent)) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your extra expenses are very high! Live it up but tone it down a little will ya? We recommend you cut your extra expenses down to under 30% of your salary.'
+        DISPLAY 'OR if you want, you can increase your income by: SFr. ', Income_Raise, '. Work hard play hard!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Bills_Percent > 50) THEN
+        COMPUTE Income_Raise = ((100 - Bills_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your bill expenses take over half your salary! Yikes! We recommend keeping bill expenses to be under half your salary. Any bills you can reduce/cut?'
+        DISPLAY 'OR if you want, you can increase your income by: SFr. ', Income_Raise, '. I know you have at least one bill you can cut off!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Food_Percent > 15) THEN
+        COMPUTE Income_Raise = ((100 - Food_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your food expenses are very high! Unless you have a family, we recommend for a single person to spend no more than 15% of their income on food. Stop eating out!'
+        DISPLAY 'OR if you want, you can increase your income by: SFr. ', Income_Raise, '. Food is always worth it.'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF.
 
 POUNDS-SECT.
     MULTIPLY WS-LEDGER-SALARY BY .81 GIVING WS-LEDGER-SALARY
@@ -150,7 +172,28 @@ POUNDS-SECT.
     DISPLAY '| Travel        | £', WS-LEDGER-TRAVEL, '  |  ', Travel_Percent, '% | #########################'
     DISPLAY '| Taxes         | £', Yearly_Taxes, '  |  ', Taxes_Percent, '% | #########################'
     DISPLAY '| Extra         | £', Extra, ' | ', Extra_Percent, '% | #########################'
-    DISPLAY '--------------------------------------------------------------------------------------------------'.
+    DISPLAY '--------------------------------------------------------------------------------------------------'
+    IF (Extra_Percent < 30) THEN
+        COMPUTE Income_Raise = ((100 - (100 - Extra_Percent)) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your extra expenses are very high! Live it up but tone it down a little will ya? We recommend you cut your extra expenses down to under 30% of your salary.'
+        DISPLAY 'OR if you want, you can increase your income by: £', Income_Raise, '. Work hard play hard!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Bills_Percent > 50) THEN
+        COMPUTE Income_Raise = ((100 - Bills_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your bill expenses take over half your salary! Yikes! We recommend keeping bill expenses to be under half your salary. Any bills you can reduce/cut?'
+        DISPLAY 'OR if you want, you can increase your income by: £', Income_Raise, '. I know you have at least one bill you can cut off!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Food_Percent > 15) THEN
+        COMPUTE Income_Raise = ((100 - Food_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your food expenses are very high! Unless you have a family, we recommend for a single person to spend no more than 15% of their income on food. Stop eating out!'
+        DISPLAY 'OR if you want, you can increase your income by: £', Income_Raise, '. Food is always worth it.'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF.
 
 YEN-SECT.
     MULTIPLY WS-LEDGER-SALARY BY 107.6 GIVING WS-LEDGER-SALARY
@@ -187,7 +230,28 @@ YEN-SECT.
     DISPLAY '| Travel        | ¥', WS-LEDGER-TRAVEL, '  |  ', Travel_Percent, '% | #########################'
     DISPLAY '| Taxes         | ¥', Yearly_Taxes, '  |  ', Taxes_Percent, '% | #########################'
     DISPLAY '| Extra         | ¥', Extra, ' | ', Extra_Percent, '% | #########################'
-    DISPLAY '--------------------------------------------------------------------------------------------------'.
+    DISPLAY '--------------------------------------------------------------------------------------------------'
+    IF (Extra_Percent < 30) THEN
+        COMPUTE Income_Raise = ((100 - (100 - Extra_Percent)) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your extra expenses are very high! Live it up but tone it down a little will ya? We recommend you cut your extra expenses down to under 30% of your salary.'
+        DISPLAY 'OR if you want, you can increase your income by: ¥', Income_Raise, '. Work hard play hard!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Bills_Percent > 50) THEN
+        COMPUTE Income_Raise = ((100 - Bills_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your bill expenses take over half your salary! Yikes! We recommend keeping bill expenses to be under half your salary. Any bills you can reduce/cut?'
+        DISPLAY 'OR if you want, you can increase your income by: ¥', Income_Raise, '. I know you have at least one bill you can cut off!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Food_Percent > 15) THEN
+        COMPUTE Income_Raise = ((100 - Food_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your food expenses are very high! Unless you have a family, we recommend for a single person to spend no more than 15% of their income on food. Stop eating out!'
+        DISPLAY 'OR if you want, you can increase your income by: ¥', Income_Raise, '. Food is always worth it.'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF.
 
 EUROS-SECT.
     MULTIPLY WS-LEDGER-SALARY BY .92 GIVING WS-LEDGER-SALARY
@@ -224,7 +288,28 @@ EUROS-SECT.
     DISPLAY '| Travel        | €', WS-LEDGER-TRAVEL, '  |  ', Travel_Percent, '% | #########################'
     DISPLAY '| Taxes         | €', Yearly_Taxes, '  |  ', Taxes_Percent, '% | #########################'
     DISPLAY '| Extra         | €', Extra, ' | ', Extra_Percent, '% | #########################'
-    DISPLAY '--------------------------------------------------------------------------------------------------'.
+    DISPLAY '--------------------------------------------------------------------------------------------------'
+    IF (Extra_Percent < 30) THEN
+        COMPUTE Income_Raise = ((100 - (100 - Extra_Percent)) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your extra expenses are very high! Live it up but tone it down a little will ya? We recommend you cut your extra expenses down to under 30% of your salary.'
+        DISPLAY 'OR if you want, you can increase your income by: €', Income_Raise, '. Work hard play hard!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Bills_Percent > 50) THEN
+        COMPUTE Income_Raise = ((100 - Bills_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your bill expenses take over half your salary! Yikes! We recommend keeping bill expenses to be under half your salary. Any bills you can reduce/cut?'
+        DISPLAY 'OR if you want, you can increase your income by: €', Income_Raise, '. I know you have at least one bill you can cut off!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Food_Percent > 15) THEN
+        COMPUTE Income_Raise = ((100 - Food_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your food expenses are very high! Unless you have a family, we recommend for a single person to spend no more than 15% of their income on food. Stop eating out!'
+        DISPLAY 'OR if you want, you can increase your income by: €', Income_Raise, '. Food is always worth it.'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF.
 
 KRONA-SECT.
     MULTIPLY WS-LEDGER-SALARY BY 10.04 GIVING WS-LEDGER-SALARY
@@ -261,7 +346,28 @@ KRONA-SECT.
     DISPLAY '| Travel        | kr', WS-LEDGER-TRAVEL, '  |  ', Travel_Percent, '% | #########################'
     DISPLAY '| Taxes         | kr', Yearly_Taxes, '  |  ', Taxes_Percent, '% | #########################'
     DISPLAY '| Extra         | kr', Extra, ' | ', Extra_Percent, '% | #########################'
-    DISPLAY '--------------------------------------------------------------------------------------------------'.
+    DISPLAY '--------------------------------------------------------------------------------------------------'
+    IF (Extra_Percent < 30) THEN
+        COMPUTE Income_Raise = ((100 - (100 - Extra_Percent)) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your extra expenses are very high! Live it up but tone it down a little will ya? We recommend you cut your extra expenses down to under 30% of your salary.'
+        DISPLAY 'OR if you want, you can increase your income by: kr', Income_Raise, '. Work hard play hard!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Bills_Percent > 50) THEN
+        COMPUTE Income_Raise = ((100 - Bills_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your bill expenses take over half your salary! Yikes! We recommend keeping bill expenses to be under half your salary. Any bills you can reduce/cut?'
+        DISPLAY 'OR if you want, you can increase your income by: kr', Income_Raise, '. I know you have at least one bill you can cut off!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Food_Percent > 15) THEN
+        COMPUTE Income_Raise = ((100 - Food_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your food expenses are very high! Unless you have a family, we recommend for a single person to spend no more than 15% of their income on food. Stop eating out!'
+        DISPLAY 'OR if you want, you can increase your income by: kr', Income_Raise, '. Food is always worth it.'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF.
 
 DOLLARS-SECT.
     DISPLAY 'Annual salary $', WS-LEDGER-SALARY
@@ -290,4 +396,25 @@ DOLLARS-SECT.
     DISPLAY '| Travel        | $', WS-LEDGER-TRAVEL, '  |  ', Travel_Percent, '% | #########################'
     DISPLAY '| Taxes         | $', Yearly_Taxes, '  |  ', Taxes_Percent, '% | #########################'
     DISPLAY '| Extra         | $', Extra, ' | ', Extra_Percent, '% | #########################'
-    DISPLAY '--------------------------------------------------------------------------------------------------'.
+    DISPLAY '--------------------------------------------------------------------------------------------------'
+    IF (Extra_Percent < 30) THEN
+        COMPUTE Income_Raise = ((100 - (100 - Extra_Percent)) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your extra expenses are very high! Live it up but tone it down a little will ya? We recommend you cut your extra expenses down to under 30% of your salary.'
+        DISPLAY 'OR if you want, you can increase your income by: $', Income_Raise, '. Work hard play hard!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Bills_Percent > 50) THEN
+        COMPUTE Income_Raise = ((100 - Bills_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your bill expenses take over half your salary! Yikes! We recommend keeping bill expenses to be under half your salary. Any bills you can reduce/cut?'
+        DISPLAY 'OR if you want, you can increase your income by: $', Income_Raise, '. I know you have at least one bill you can cut off!'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF
+    IF (Food_Percent > 15) THEN
+        COMPUTE Income_Raise = ((100 - Food_Percent) / 100) * WS-LEDGER-SALARY
+        DISPLAY 'We noticed that your food expenses are very high! Unless you have a family, we recommend for a single person to spend no more than 15% of their income on food. Stop eating out!'
+        DISPLAY 'OR if you want, you can increase your income by: $', Income_Raise, '. Food is always worth it.'
+        DISPLAY '--------------------------------------------------------------------------------------------------'
+        STOP RUN
+    END-IF.
